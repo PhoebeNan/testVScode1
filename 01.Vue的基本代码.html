@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- 这个div指的就是view，用于向用户显示界面 -->
+    <div id="app">
+        <p v-cloak>++++++{{ msg }}</p> 
+        <h4 v-text="msg">======</h4>
+
+        <div v-text="msg2">dfasd</div>
+        
+        <div v-html="msg2">sdfghgh</div>
+
+        <input type="button" value="按钮" v-bind:title="vueTitle + 'sdfghgh'"/>
+
+        <input type="button" value="按钮2" :title="vueTitle" @click="show"/>
+        
+    </div>   
+    <script src="./lib/vue-2.4.0.js"></script>
+
+    <script>
+        //vm这个new出来的Vue实例就是vm，起到了调度者的作用
+        var vm = new Vue({
+            el: '#app',  //表示我们new出来的这个vue实例，要控制页面中的哪个区域
+            data: {
+                msg: '世界！',  //data就是MVVM中的第一个M，用于存储数据
+                msg2: '<h1>我是h1标签</h1>',
+                vueTitle: '这是vue的标题'
+            },
+            methods: {
+                show: function(){
+                    alert('helloZyn');
+                }
+            },
+            
+        })
+    </script>
+</body>
+</html>
